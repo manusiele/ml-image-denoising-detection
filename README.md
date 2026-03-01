@@ -26,16 +26,21 @@ ml-image-denoising-detection/
 pip install -r requirements.txt
 ```
 
-2. Configure Kaggle API:
+2. Configure Kaggle API securely:
 ```bash
-# Place your kaggle.json in ~/.kaggle/
-chmod 600 ~/.kaggle/kaggle.json
+# Copy environment template
+cp .env.example .env
+
+# Edit .env and add your Kaggle API token
+# KAGGLE_API_TOKEN=KGAT_your_token_here
 ```
 
-3. Setup Kaggle API (no download needed!):
+3. Verify setup:
 ```bash
 python scripts/download_dataset.py
 ```
+
+**Security**: Your API token is stored in `.env` (git-ignored) and never committed to the repository. See [SECURITY.md](SECURITY.md) for details.
 
 The project uses Kaggle's API to access Pascal VOC dataset online - no local download required!
 

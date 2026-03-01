@@ -1,6 +1,6 @@
-# Hybrid Image Denoising and CNN-Based Object Detection
+# Object Detection and Recognition Using Convolutional Neural Networks on the Pascal VOC Dataset
 
-A machine learning project implementing image denoising with quality evaluation (PSNR/SSIM) followed by CNN-based object detection on the Pascal VOC dataset.
+A machine learning project implementing CNN-based object detection and recognition on the Pascal VOC dataset, with an integrated image denoising/enhancement stage to improve detection accuracy. Evaluation includes PSNR/SSIM for image quality and mAP for detection performance.
 
 ## Project Structure
 
@@ -38,7 +38,8 @@ python scripts/download_dataset.py
 
 ## Project Goals
 
-1. **Image Preprocessing**: Apply denoising/enhancement techniques
-2. **Quality Evaluation**: Measure PSNR and SSIM metrics
-3. **Object Detection**: Train/evaluate CNN-based detector
-4. **Impact Analysis**: Compare detection performance (mAP) on original vs. enhanced images
+1. **Object Detection**: Implement CNN-based object detection and recognition using Faster R-CNN
+2. **Image Enhancement**: Apply denoising/restoration techniques to improve image quality
+3. **Quality Evaluation**: Measure PSNR and SSIM metrics on enhanced images
+4. **Performance Analysis**: Compare detection accuracy (mAP) on original vs. enhanced images
+5. **Demonstrate**: How image preprocessing affects CNN detection performance

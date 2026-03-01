@@ -3,16 +3,23 @@ Secure Kaggle API configuration
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+    DOTENV_AVAILABLE = True
+except ImportError:
+    DOTENV_AVAILABLE = False
 
 class KaggleConfig:
     """Secure Kaggle API configuration manager"""
     
     def __init__(self):
         """Initialize configuration"""
-        # Load environment variables from .env file
-        env_path = Path(__file__).parent.parent.parent / '.env'
-        load_dotenv(env_path)
+        # Load environment variables from .env file if available
+        if DOTENV_AVAILABLE:
+            env_path = Path(__file__).parent.parent.parent / '.env'
+            if env_path.exists():
+                load_dotenv(env_path)
         
         self.api_token = None
         self._load_token()
@@ -25,13 +32,20 @@ class KaggleConfig:
             raise ValueError(
                 "KAGGLE_API_TOKEN not found!\n"
                 "Please set it in .env file or as environment variable:\n"
-                "export KAGGLE_API_TOKEN=your_token_here"
+                "export KAGGLE_API_TOKEN=your_token_here\n"
+                "Or run: source .env"
             )
     
     def setup_environment(self):
         """Setup Kaggle environment variables"""
         if self.api_token:
+            # Set the token for Kaggle API
             os.environ['KAGGLE_API_TOKEN'] = self.api_token
+            
+            # Also create kaggle config directory if needed
+            kaggle_dir = Path.home() / '.kaggle'
+            kaggle_dir.mkdir(exist_ok=True)
+            
             return True
         return False
     

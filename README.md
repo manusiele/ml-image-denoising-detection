@@ -6,10 +6,9 @@ A machine learning project implementing CNN-based object detection and recogniti
 
 ```
 ml-image-denoising-detection/
-├── data/                    # Dataset directory (auto-created)
-│   └── pascal-voc/         # Pascal VOC dataset
 ├── notebooks/              # Jupyter notebooks
 ├── src/                    # Source code
+│   ├── data/              # Kaggle API data loader (online access)
 │   ├── preprocessing/      # Image denoising/enhancement
 │   ├── detection/          # Object detection models
 │   └── evaluation/         # Metrics (PSNR, SSIM, mAP)
@@ -17,6 +16,8 @@ ml-image-denoising-detection/
 ├── results/                # Output results and visualizations
 └── requirements.txt        # Python dependencies
 ```
+
+**Note**: No local dataset download required! Data is accessed directly from Kaggle API.
 
 ## Setup Instructions
 

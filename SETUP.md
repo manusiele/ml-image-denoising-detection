@@ -27,13 +27,13 @@ mv ~/Downloads/kaggle.json ~/.kaggle/
 chmod 600 ~/.kaggle/kaggle.json
 ```
 
-## 3. Download Pascal VOC Dataset
+## 3. Setup Kaggle API (No Download Required!)
 
 ```bash
 python scripts/download_dataset.py
 ```
 
-This will download and extract the Pascal VOC 2012 dataset to `data/pascal-voc/`
+This will authenticate your Kaggle API for online access. The dataset stays on Kaggle - we access it directly via API!
 
 ## 4. Start Working
 
@@ -49,12 +49,13 @@ Start with:
 
 ## Project Workflow
 
-1. **Data Exploration**: Understand Pascal VOC structure and classes
-2. **Image Preprocessing**: Apply denoising techniques (Gaussian, Bilateral, NLM)
-3. **Quality Evaluation**: Measure PSNR and SSIM on denoised images
-4. **Object Detection**: Train CNN detector (Faster R-CNN)
-5. **Impact Analysis**: Compare mAP on original vs. denoised images
-6. **Report**: Document findings showing how denoising affects detection
+1. **Data Access**: Connect to Pascal VOC via Kaggle API (no download!)
+2. **Data Exploration**: Stream and explore images online
+3. **Image Preprocessing**: Apply denoising techniques (Gaussian, Bilateral, NLM)
+4. **Quality Evaluation**: Measure PSNR and SSIM on denoised images
+5. **Object Detection**: Train CNN detector (Faster R-CNN)
+6. **Impact Analysis**: Compare mAP on original vs. denoised images
+7. **Report**: Document findings showing how denoising affects detection
 
 ## Expected Outcomes
 

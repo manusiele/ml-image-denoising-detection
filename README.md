@@ -31,10 +31,12 @@ pip install -r requirements.txt
 chmod 600 ~/.kaggle/kaggle.json
 ```
 
-3. Download Pascal VOC dataset:
+3. Setup Kaggle API (no download needed!):
 ```bash
 python scripts/download_dataset.py
 ```
+
+The project uses Kaggle's API to access Pascal VOC dataset online - no local download required!
 
 ## Project Goals
 

@@ -84,10 +84,17 @@ pip install --default-timeout=600 pillow tqdm lxml
 ## Step 5: Verify Setup
 
 ```bash
-python scripts/download_dataset.py
+# Load environment and test Kaggle API
+./setup_kaggle.sh
 ```
 
 You should see: "✓ Kaggle API authenticated successfully!"
+
+**For daily use**, always load the environment first:
+```bash
+source venv/bin/activate
+export $(cat .env | grep -v '^#' | xargs)
+```
 
 ## Step 6: Start Jupyter
 

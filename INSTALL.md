@@ -24,14 +24,28 @@ You should see `(venv)` in your terminal prompt.
 
 ## Step 4: Install Dependencies
 
-### Option 1: Install with increased timeout (recommended for slow connections)
+### RECOMMENDED: CPU-Only Installation (for non-NVIDIA systems)
+
+Since you don't have NVIDIA GPU, use CPU-only versions (much smaller and faster):
 
 ```bash
 pip install --upgrade pip
-pip install --default-timeout=1000 -r requirements.txt
+
+# Install PyTorch CPU-only (200MB instead of 915MB)
+pip install --default-timeout=1800 torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+# Install remaining packages
+pip install --default-timeout=1800 -r requirements-cpu.txt
 ```
 
-The `--default-timeout=1000` sets timeout to ~16 minutes (1000 seconds).
+### Option 1: Install with increased timeout (if using GPU version)
+
+```bash
+pip install --upgrade pip
+pip install --default-timeout=1800 -r requirements.txt
+```
+
+The `--default-timeout=1800` sets timeout to 30 minutes.
 
 ### Option 2: Install PyTorch separately first (for very slow connections)
 
@@ -98,17 +112,33 @@ deactivate
 
 ## Troubleshooting
 
+### Network timeout during installation:
+```bash
+# Increase timeout to 30 minutes
+pip install --default-timeout=1800 -r requirements.txt
+
+# Or install CPU-only PyTorch (much smaller - 200MB vs 915MB)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+pip install -r requirements.txt
+```
+
 ### If pip install fails:
 ```bash
 # Try with --no-cache-dir
-pip install --no-cache-dir -r requirements.txt
+pip install --no-cache-dir --default-timeout=1800 -r requirements.txt
 ```
 
-### If torch installation is slow:
+### If connection keeps dropping:
 ```bash
-# Install CPU-only version (faster, smaller)
+# Install packages individually with retries
+pip install --default-timeout=1800 --retries 10 torch torchvision
+```
+
+### Check your internet connection:
+```bash
+# Test download speed
+curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip
+
+# If connection is unstable, use CPU-only PyTorch (recommended)
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 ```
-
-### If you get permission errors:
-Make sure you're in the virtual environment (you should see `(venv)` in prompt)

@@ -1,9 +1,5 @@
-# Core ML/DL frameworks (CPU-only versions for non-NVIDIA systems)
-# For CPU-only: Install with --index-url https://download.pytorch.org/whl/cpu
-# torch>=2.0.0
-# torchvision>=0.15.0
-tensorflow-cpu>=2.12.0
-keras>=2.12.0
+# CPU-Only Requirements (for systems without NVIDIA GPU)
+# Use this file for faster installation without CUDA dependencies
 
 # Data handling
 numpy>=1.24.0
@@ -35,3 +31,10 @@ tqdm>=4.66.0
 
 # XML parsing (for Pascal VOC annotations)
 lxml>=4.9.0
+
+# TensorFlow CPU-only (no CUDA)
+tensorflow-cpu>=2.12.0
+keras>=2.12.0
+
+# Note: Install PyTorch CPU separately:
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu

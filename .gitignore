@@ -46,8 +46,11 @@ results/*.csv
 *.swp
 *.swo
 
-# Kaggle
+# Kaggle & Environment Variables
 kaggle.json
+.env
+.env.local
+*.env
 
 # OS
 .DS_Store

@@ -7,25 +7,32 @@ cd ml-image-denoising-detection
 pip install -r requirements.txt
 ```
 
-## 2. Configure Kaggle API
+## 2. Configure Kaggle API (Secure Method)
 
-### Get your API credentials:
+### Get your API token:
 1. Go to https://www.kaggle.com/settings
 2. Scroll to "API" section
 3. Click "Create New API Token"
-4. Download `kaggle.json`
+4. Copy the token (format: KGAT_xxxxx...)
 
-### Setup credentials:
+### Setup credentials securely:
 ```bash
-# Create kaggle directory
-mkdir -p ~/.kaggle
+# Copy the example environment file
+cp .env.example .env
 
-# Move your kaggle.json there
-mv ~/Downloads/kaggle.json ~/.kaggle/
+# Edit .env and add your token
+# KAGGLE_API_TOKEN=KGAT_your_actual_token_here
+nano .env  # or use any text editor
 
-# Set permissions
-chmod 600 ~/.kaggle/kaggle.json
+# Verify .env is in .gitignore (already done)
+cat .gitignore | grep .env
 ```
+
+**IMPORTANT SECURITY NOTES:**
+- ✓ .env file is in .gitignore (never committed to git)
+- ✓ Token is loaded from environment variables only
+- ✓ Never hardcode tokens in source code
+- ✗ Never share your .env file or commit it to git
 
 ## 3. Setup Kaggle API (No Download Required!)
 
